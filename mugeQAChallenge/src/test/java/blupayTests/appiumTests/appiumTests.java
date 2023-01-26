@@ -10,15 +10,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
 public class appiumTests {
-	public static final String UserName = "appiumtester_yHvQVI";
-	public static final String AccessKey = "ovWxpHg7gaUStb4Z73Lb";
+	public static final String userName = "appiumtester_yHvQVI";
+	public static final String accessKey = "ovWxpHg7gaUStb4Z73Lb";
 
-	public static final String URL = "https://" + UserName + ":" + AccessKey + "@hub-cloud.browserstack.com/wd/hub";
+	public static final String URL = "https://" + userName + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub";
 	public IOSDriver driver;
 
 	@BeforeTest
@@ -48,10 +47,23 @@ public class appiumTests {
 		MobileElement loginButton = (MobileElement) driver.findElement(MobileBy.id("com.bluepay.roket:id/user_login_Button"));
 		loginButton.click();
 		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+
+		// Login with new user
+
+		MobileElement phoneNumberTextInput = (MobileElement) driver.findElement(MobileBy.id("com.bluepay.roket:id/phoneNumber_inputText"));
+		phoneNumberTextInput.clear();
+		phoneNumberTextInput.sendKeys("5322052229");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		MobileElement passwordTextInput = (MobileElement) driver.findElement(MobileBy.id("com.bluepay.roket:id/password_inputPassword"));
+		passwordTextInput.clear();
+		passwordTextInput.sendKeys("Serdar.1");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		MobileElement loginWithCredentialsButton = (MobileElement) driver.findElement(MobileBy.id("com.bluepay.roket:id/login_action_Button"));
 		loginWithCredentialsButton.click();
-		String welcomeText = loginWithCredentialsButton.getText();
-		Assert.assertEquals(welcomeText, "Merhaba, Çağrı");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		MobileElement welcomeTextButton = (MobileElement) driver.findElement(MobileBy.id("com.bluepay.roket:id/user_login_Button"));
+		String welcomeText = welcomeTextButton.getText();
+		Assert.assertEquals(welcomeText, "Merhaba, Hasan Serdar");
 	}
 
 	@AfterTest
