@@ -19,12 +19,7 @@ public class apiTests {
 		JSONObject request = new JSONObject();
 		request.put("phoneNumber", "+905322052229");
 		request.put("password", "Serdar.1");
-		given().header("Content-Type", "application/json").
-				body(request.toString()).
-		when().post(baseURI).
-		then();
-		System.out.println("=====================================================");
-		System.out.println("=====================================================");
+
 		Thread.sleep(4000);
 
 		response = (Response) RestAssured.given().header("Content-Type", "application/json").body(request.toString()).when().post(baseURI).then().log().all().extract().response();
@@ -47,12 +42,7 @@ public class apiTests {
 		JSONObject request = new JSONObject();
 		request.put("phoneNumber", "+905322052229");
 		request.put("password", "Serdar.1");
-		given().header("Content-Type", "application/json").
-				body(request.toString()).
-				when().post(baseURI).
-				then();
-		System.out.println("=====================================================");
-		System.out.println("=====================================================");
+		
 		Thread.sleep(4000);
 
 		System.out.println(request);
@@ -62,7 +52,7 @@ public class apiTests {
 		int statusCode = response.getStatusCode();
 		System.out.println("The response code is " + statusCode);
 		JSONObject responseJson = new JSONObject(response.getBody().asString());
-		System.out.println("muge is here "+responseJson);
+		// System.out.println("muge is here "+responseJson);
 
 		String token = responseJson.getJSONObject("data").getJSONObject("tokenInformation").getString("token");
 
