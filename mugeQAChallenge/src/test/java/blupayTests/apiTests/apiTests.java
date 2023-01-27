@@ -54,7 +54,7 @@ public class apiTests {
 		Assert.assertNotNull(isExpireDateExist);
 		Assert.assertNotNull(isMetaExist);
 		Assert.assertEquals(buildVersion, "1.0-SNAPSHOT");
-		Assert.assertEquals(locale, "1.0-SNAPSHOT");
+		Assert.assertEquals(locale, "tr");
 	}
 
 
