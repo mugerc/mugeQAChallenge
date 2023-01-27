@@ -6,12 +6,15 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Optional;
+
 import static io.restassured.RestAssured.baseURI;
 
 public class apiTests {
 
 	public Response postLoginHelper() throws InterruptedException {
 		Response response;
+		//String token = null;
 
 		RestAssured.baseURI = "https://dev2.roketapp.site/identity/user/login";
 		JSONObject request = new JSONObject();
