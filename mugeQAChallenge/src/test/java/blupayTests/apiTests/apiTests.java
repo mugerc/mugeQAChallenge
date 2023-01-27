@@ -83,7 +83,7 @@ public class apiTests {
 		Assert.assertEquals(name, "Hasan Serdar");
 		Assert.assertEquals(lastName, "Hamzaoğulları");
 		Assert.assertEquals(userName, "anonymous4291732");
-		Assert.assertEquals(kycStatus, 1);
+		Assert.assertEquals(kycStatus.booleanValue(), true);
 		Assert.assertEquals(accountType, "PRIVATE");
 		Assert.assertEquals(buildVersion, "1.0-SNAPSHOT");
 		Assert.assertEquals(locale, "tr");
